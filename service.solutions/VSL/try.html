@@ -73,11 +73,11 @@ button{cursor:pointer}
 a{color:inherit}
 
 #lockScreen{
-  width: 100%;
+ width: 100%;
     max-width: 600px;
     min-height: 100vh;
     margin: auto;
-    padding: 34px 10px 0px 10px;
+    padding: 150px 10px 0px 10px;
     display: flex;
     overflow: hidden;
     flex-direction: column;
@@ -86,7 +86,14 @@ a{color:inherit}
 
 .lock-box{width:100%}
 h2#title{font-size:25px}
-
+.faq-issue-opt{
+  color: red;
+}
+.faq-issue-opt:focus{
+  outline:2px solid red;
+  outline-offset:2px;
+  border-radius:2px;
+}
 button:focus,a:focus,input:focus{
   outline:2px solid var(--accent);
   outline-offset:2px;
@@ -113,11 +120,12 @@ h3#detailModalTitle,h3#modalTitle,h3#premiumModalTitle{
 }
 
 .lock-header h2{
-  font-size:50px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+  font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .entry-total.detail-row{
@@ -129,25 +137,24 @@ h3#detailModalTitle,h3#modalTitle,h3#premiumModalTitle{
 .entry-total.detail-row .label{opacity:55%}
 
 button.lock-btn{
-  width:130px;
+  width:120px;
   border:solid 1px var(--accent);
 }
 
 .lock-header h6{
-  margin:-15px;
-  font-weight:normal;
-  opacity:55%;
+ margin: -12px;
+    opacity: 65%;
+    font-weight: 500;
 }
 
 .lock-body{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap: 20px;
 }
 
 .lock-label{
   text-align:center;
-  font-size:15px;
 }
 
 .lock-input,.note-input{
@@ -178,9 +185,11 @@ button.lock-btn{
 }
 
 .lock-hint{
-  font-size:13px;
-  opacity:85%;
-  margin-top:0;
+font-size: 13.5px;
+    opacity: 85%;
+    margin-top: 0;
+    line-height: 20px;
+    font-weight: 400;
 }
 
 .lock-hint a:focus{
@@ -215,20 +224,18 @@ button.lock-btn{
 } */
 
 .faq-question{
-width: 100%;
-    padding: 5px;
+padding: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 30px;
     background: #8080803d;
     color: var(--text);
     border: 0;
     text-align: left;
     cursor: pointer;
-    font-size: 16px;
     transition: color .15s;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .faq-question:focus{
@@ -241,10 +248,18 @@ width: 100%;
   font-size:19px;
   flex-shrink:0;
 }
-
+.anotherlogin {
+display: flex;
+    margin: 10px 0;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0 25px 0;
+    border-top: 1px solid var(--border);
+}
 .faq-answer{
   padding:0 5px 13px;
-  font-size:15px;
   color:var(--muted);
   line-height:1.7;
 }
@@ -266,7 +281,9 @@ width: 100%;
   width:100%;
   padding:16px 0 5px;
 }
-
+.faq-item {
+    margin-top: 15px;
+}
 .top-banner{
   display:flex;
   flex-wrap:wrap;
@@ -738,11 +755,8 @@ body[data-detail-effects="off"] .detail-row:hover{
 </head>
 
 <body>
-
-<!-- LOGIN SCREEN -->
-
+  <div id="scrollup"></div>
 <div id="lockScreen">
-
   <div class="lock-box">
 
     <div title="VSL is a service from BS&MFI Services" class="lock-header">
@@ -767,7 +781,7 @@ body[data-detail-effects="off"] .detail-row:hover{
 
         <button class="lock-btn" onclick="checkPassword()"
         title="Go to borrows or lends details section">
-          Login now
+          Login
         </button>
       </div>
 
@@ -781,9 +795,7 @@ body[data-detail-effects="off"] .detail-row:hover{
         fill out the
         <a title="Fill this whenever you think you are facing issues from our side"
         style="color:red;font-weight:800"
-        href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform?usp=send_form">
-          Issue form
-        </a>.
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform?usp=send_form">Issue form</a>.
       </div>
 
     </div>
@@ -904,10 +916,7 @@ body[data-detail-effects="off"] .detail-row:hover{
           </button>
           <div class="faq-answer" hidden>
             Contact your coordinator or submit the
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform?usp=send_form">
-              VSL Issue Form
-            </a>
-            so the issue can be reviewed.
+            <a class="faq-issue-opt" style="color: red;" href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform?usp=send_form">VSL Issue Form</a> so the issue can be reviewed.
           </div>
         </div>
 
@@ -922,14 +931,41 @@ body[data-detail-effects="off"] .detail-row:hover{
             VSL-related problems.
           </div>
         </div>
-
-      </div>
+        <button class="lock-btn" style="    width: 100%;position: sticky;bottom: 10px;
+    margin: 0 0 10px 0;"><a style="text-decoration: none;" href="all.faqs.html">View More</a></button>
+      </div> 
     </div>
-
+    
   </div>
+<div class="anotherlogin">
+  <label class="lock-label" for="passwordInput">
+        Ready to login? Enter your account password.
+      </label>
 
+      <div style="display:flex;justify-content:center;align-items:center;gap:5px">
+      <a href="#lockScreen" class="lock-input" style="    text-align: center;
+    text-decoration: none;
+    color: var(--muted);">Enter password</a>
+      <button class="lock-btn" onclick="checkPassword()"
+        title="Go to borrows or lends details section">
+          Login
+        </button>
+      </div>
+
+      <p id="lockError" class="lock-error" hidden>
+        Wrong password. Try again.
+      </p>
+      <div class="lock-hint">
+        If you can't log in, it means you don't have any active borrows or lends.
+        If you do have an active borrows or lends and still face issues,
+        fill out the
+        <a title="Fill this whenever you think you are facing issues from our side"
+        style="color:red;font-weight:800"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform?usp=send_form">Issue form</a>.
+      </div>
+</div>
 <footer>
-      <div class="footer-links" style="    border-top: 1px solid var(--border);">
+      <div class="footer-links">
 
         <div style="display:flex;flex-direction:column;align-items:baseline;gap: 15px;">
           <a href="https://mfi0212.github.io/MFI/privacyandterms#terms">Terms and Conditions</a>
@@ -938,12 +974,27 @@ body[data-detail-effects="off"] .detail-row:hover{
           <a href="https://mfi0212.github.io/MFI/patron.info">Patron Information</a>
         </div>
 
-        <div>
+       <div style="display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;">
+         <div>
           VSL, All rights reserved.<br>
           Version (v.03.05.11)
         </div>
-
+<a style="    background: var(--accent);
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    position: relative;
+    color: white;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;" href="#scrollup">Scroll up</a>
       </div>
+       </div>
     </footer>
 
 </div>
@@ -1042,12 +1093,27 @@ body[data-detail-effects="off"] .detail-row:hover{
           <a href="https://mfi0212.github.io/MFI/patron.info">Patron Information</a>
         </div>
 
-        <div>
+       <div style="display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    gap: 30px;">
+         <div>
           VSL, All rights reserved.<br>
           Version (v.03.05.11)
         </div>
-
+<a style="    background: var(--accent);
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    position: relative;
+    color: white;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;" href="#scrollup">Scroll up</a>
       </div>
+       </div>
     </footer>
 
   </div>
@@ -1125,7 +1191,6 @@ body[data-detail-effects="off"] .detail-row:hover{
   </div>
 
 </div>
-
 <script>
 
 /* CONFIGURATION */
@@ -1537,7 +1602,7 @@ function toggleTheme(){
 
 function initLockScreen(){
 
-  const input=document.getElementById("passwordInput");
+  const input=document.getElementById("passwordInput","password2Input");
   const error=document.getElementById("lockError");
 
   let rememberedPassword="";
