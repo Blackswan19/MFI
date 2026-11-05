@@ -10,13 +10,13 @@
     *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;scrollbar-color: #fefefe66 rgb(30, 30, 30);}
     [hidden]{display:none!important}
     :root{
-      color-scheme:light;
+      color-scheme:light;--highlight-total: white;--highlight-light-total: black;
       --bg:#fff;--text:#000;--surface:#fff;--border:#0000003d;
       --muted:#555;--field-bg:#fff;--field-text:#000;
       --strong-bg:#000;--strong-text:#fff;--accent:#0800f0;
     }
     body[data-theme="amoled"]{
-      color-scheme:dark;
+      color-scheme:dark;--highlight-total: white;--highlight-light-total: white;
       --bg:#000;--text:#fff;--surface:#000;--border:#ffffff45;
       --muted:#bdbdbd;--field-bg:#000;--field-text:#fff;
       --strong-bg:#fff;--strong-text:#000;
@@ -26,7 +26,7 @@
     button{cursor:pointer}a{color:inherit}
     #lockScreen{width:100%;max-width:500px;min-height:100vh;margin:auto;padding:10px;display:flex;overflow:hidden;flex-direction:column;justify-content:center}
     .lock-box{width:100%;}h2#title {
-    font-size: 40px;
+    font-size: 25px;
 }    button:focus,
     a:focus,
     input:focus{
@@ -43,24 +43,28 @@
     padding: 6px;
     color: white;
     }
+    #detailModalBody{
+      text-decoration: none;
+    }
     .lock-header{text-align:center;margin-bottom:24px}.lock-header h2{font-size:50px;display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;}.entry-total.detail-row {
     background: transparent;
-    padding: 5px 0;
+    padding: 10px 0;color: var(--highlight-light-total);
 }
 .entry-total.detail-row .label {
     opacity: 55%;
 }button.lock-btn {
-  width: fit-content;
-    padding: 10px 20px;
+ width: 130px;
     border: solid 1px var(--accent);
 }
     .lock-header h6{margin:-15px;font-weight:normal;    opacity: 55%;}
-    .lock-body{display:flex;flex-direction:column;gap:10px}.lock-label{text-align:center;    font-size: 17px;}
+    .lock-body{display:flex;flex-direction:column;gap:10px}.lock-label{text-align:center;    font-size: 15px;}
     .lock-input,.note-input{width:100%;padding:10px;border:1px solid var(--accent);outline:none;}
-    .lock-error{color:red;text-align:center}.lock-btn,.save-btn,#totalBtn{width:100%;padding:10px;background:var(--accent);color:#fff;border:0}
+    .lock-error{    color: red;
+    text-align: center;
+    cursor: not-allowed;}.lock-btn,.save-btn,#totalBtn{width:100%;padding:10px;background:var(--accent);color:#fff;border:0}
     .save-btn:focus{border-radius:2px; outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
     .lock-hint{font-size:13px;opacity: 85%;margin-top: 0px;}.lock-hint a:focus{border-radius:2px; outline:2px solid red;outline-offset:2px}
     #mainApp{width:100%;max-width:720px;margin:0 auto}.container{width:100%;padding:16px 0 5px}
@@ -80,7 +84,7 @@
     .accent-control input{width: 40px;
     height: 40px;
     border: none;
-    background: var(--surface);
+    background: transparent;
     cursor: pointer;}
     .nav-btn:disabled {
     background: var(--accent);
@@ -93,8 +97,10 @@
     border: 1px solid var(--accent);
     transition: background .18s, color .18s, border-color .18s, box-shadow .18s;}
     
-    .nav-btn.is-active,.nav-btn[aria-current="page"]{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700;opacity:1}
-    .section-title{margin:5px;font-size:11px;text-align:center}
+    .nav-btn.is-active,.nav-btn[aria-current="page"]{background:var(--accent);color:#fff;border-color:var(--accent);opacity:1}
+    .section-title{    margin: 5px;
+    font-size: 13px;
+    text-align: center;}
 
     .user{margin-bottom:15px}.user-name{padding:0;text-align:center}
     .entry{ padding: 8px 0 12px 0;
@@ -102,7 +108,7 @@
     .entry:last-child{
       border-bottom: 1px solid var(--border);margin-bottom: -10px;
     }
-    .entry-row,.remaining,.borrowed-by-row,.paid-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:7px 0}
+    .entry-row,.remaining,.borrowed-by-row,.paid-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0}
     .entry-row .label,.remaining .label,.entry-total .label,.borrowed-by-row .label,.paid-label{flex:1;min-width:0;overflow-wrap:anywhere; opacity: 55%;}
     .entry-row .value,.remaining .value,.entry-total .value,.borrowed-by-row .value{text-align:right;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;font-weight: 700;}
     .entry-total{background: var(--accent);
@@ -110,30 +116,37 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;}
-    .paid-input-wrap{display:flex;align-items:center;gap:8px;width:48%;min-width:100px}.paid-input{width: 100%;
-    min-width: 0;
+    gap: 12px;color: var(--highlight-total);}
+    .paid-input-wrap{display:flex;align-items:center;gap:8px;}.paid-input{min-width: 0;
     padding: 0;
     border: 0;
-    background: var(--field-bg);
-    color: var(--field-text);
+    background: transparent;
     text-align: right;
     font-size: 16px;
     font-variant-numeric: tabular-nums;
-    font-weight: 700;}
+    font-weight: 700;
+    max-width: 100px;}
+    .paid-input:hover{background: rgba(133, 133, 133, 0.651);border-radius: 4px; padding: 0 10px;}
+    .paid-input:focus{
+      background-color: transparent;padding: 0 10px;
+    }
     .note-input{    text-align: left;display:block;min-height:120px;resize:vertical}.save-btn{margin-top:8px}
+
     .note {
    padding: 10px 0;
     border-bottom: 1px solid var(--border);
     overflow-wrap: anywhere;
-}.entry-total .label {
+}
+.entry-total .label {
     opacity: 100%;
 }
 .mainreflogo{
     text-decoration: none;
 }
 
-    .note-input:focus{border-radius:2px; outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+    .note-input:focus{    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;}
     .note-text{white-space:pre-wrap;overflow-wrap:anywhere}.note-date{font-size:12px;    opacity: 50%;}.delete-note{float: right;
     background: transparent;
     color: red;
@@ -149,7 +162,7 @@
     .delete-note:focus{
       border-radius:2px; outline:2px solid red;outline-offset:2px;border-radius:2px
     }
-    .empty-notes{padding:20px 0;text-align:center}
+    .empty-notes{padding:20px 0;text-align:center; cursor: not-allowed;    border-bottom: 1px solid var(--border);}
   .account-bar {
     display: flex;
     justify-content: space-between;
@@ -175,7 +188,7 @@ ul.premium-features-list h3:focus{
    .modal-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;background:#000000ad;overflow-y:auto}
     .modal{width:100%;max-width:400px;max-height:85vh;overflow-y:auto;padding:10px;background:var(--surface);color:var(--text);    border: 1px solid var(--border);}
     .modal:hover{
-      outline:2px solid var(--accent);outline-offset:3px;border-radius: 2px
+      outline:2px solid var(--accent);outline-offset:3px;border-radius: 2px;
     }
     .modal-header{border-bottom:1px solid var(--border)}
     .modal-close{background: transparent;
@@ -228,10 +241,13 @@ ul.premium-features-list h3:focus{
     body[data-detail-effects="off"] .detail-row.detail-clickable{cursor:pointer}
     body[data-detail-effects="off"] .detail-row.detail-clickable:hover{background:color-mix(in srgb,var(--accent) 7%,transparent)}
     .premium-locked .value{filter:none;user-select:none;font-weight:600;}
-    .premium-locked{cursor:pointer}
-    .premium-locked:focus{outline:2px solid var(--accent);outline-offset:2px;    border-radius: 4px;}
+    .premium-locked{cursor: no-drop;}
+    .premium-locked:focus{outline:2px solid var(--accent);outline-offset:2px;    border-radius: 4px;cursor: all-scroll;}
     .premium-features-list{padding:12px 0 12px 20px;line-height:1.8}
     .premium-copy{padding:0px 0;line-height:1.6}
+    .premium-copy:hover,.premium-features-list li:hover{
+      text-decoration: underline;
+    }
     .premium-action{display:block;width:100%;padding:11px;background:var(--accent);color:#fff;border:0;text-decoration:none;text-align:center;margin-top:8px}
     @media(max-width:480px){.container{padding:5px}.header{justify-content:flex-start}.font-controls{width:100%}.navigation{gap:4px}.nav-btn,.total-btn{padding:6px 3px}}
   </style>
@@ -239,22 +255,22 @@ ul.premium-features-list h3:focus{
 <body>
   <div id="lockScreen">
     <div class="lock-box">
-      <div class="lock-header"><h2><img style="    width: 50%;
+      <div title="VSL is a service from BS&MFI Services" class="lock-header"><h2><img style="    width: 50%;
     border-radius: 50%;
     max-width: 180px;background: var(--accent);" src="https://i.ibb.co/2YfCF9jv/vsl-patron-trans-logo.png" alt=""> VSL</h2><h6>Powered by BS&amp;MFI</h6></div>
       <div class="lock-body">
-        <label class="lock-label" for="passwordInput">Ready to login? Enter your password below now.</label>
+        <label class="lock-label" for="passwordInput">Ready to login? Enter your account password.</label>
         <div style="display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;">
-          <input type="text" id="passwordInput" class="lock-input" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter') checkPassword()">
-          <button class="lock-btn" onclick="checkPassword()">Continue</button>
+          <input type="text" id="passwordInput" class="lock-input" placeholder="Enter password" autocomplete="current-password" onkeydown="if(event.key==='Enter') checkPassword()">
+          <button class="lock-btn" onclick="checkPassword()" title="Go to borrows or lends details section">Login now</button>
         </div>
         <p id="lockError" class="lock-error" hidden>Wrong password. Try again.</p>
         <div class="lock-hint" style="text-align:center">
-          If you can’t log in, it means you don’t have any active lending. If you do have an active amount and still face issues, fill out the
-          <a style="color:red;font-weight: 800;" href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform?usp=send_form">Issue form</a>.
+          If you can’t log in, it means you don’t have any active borrows or lends, If you do have an active borrows or lends and still face issues, fill out the
+          <a  title="Fill this whenever you thinking you are facing issues from our side"  style="color:red;font-weight: 800;" href="https://docs.google.com/forms/d/e/1FAIpQLSdmCSWXieZpqTiUqIVVihwn8vdGl-RyHijMNmovi_Bfc2GRbg/viewform?usp=send_form">Issue form</a>.
         </div>
       </div>
     </div>
@@ -273,7 +289,7 @@ ul.premium-features-list h3:focus{
     <div class="container">
       <div class="top-banner" id="topBanner"></div>
       <div style="display: none;" class="top-banner2" id="topBanner2"></div>
-      <div class="account-bar"><span id="loggedInAs" class="account-name"></span><button class="logout-btn" onclick="logout()">Logout</button></div>
+      <div class="account-bar"><span id="loggedInAs" class="account-name"></span><button class="logout-btn" title="Go to password section" onclick="logout()">Logout</button></div>
       <div class="header">
         <a class="mainreflogo" href=""><div style="    display: flex;
     justify-content: center;
@@ -286,25 +302,25 @@ ul.premium-features-list h3:focus{
         </div></a>
         <div class="today" id="todayDate"></div>
         <div class="font-controls">
-          <button class="font-btn" onclick="changeFontSize(-1)" title="Decrease font">−</button>
+          <button class="font-btn" onclick="changeFontSize(-1)" title="To decrease font size">−</button>
           <span class="font-size-label" id="fontSizeLabel">16</span>
-          <button class="font-btn" onclick="changeFontSize(1)" title="Increase font">+</button>
-          <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" type="button">Dark (AMOLED)</button>
+          <button class="font-btn" onclick="changeFontSize(1)" title="To increase font size">+</button>
+          <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" type="button" title="To change theme">Dark (AMOLED)</button>
           <label id="accentControl" class="accent-control" hidden>
             Main color
-            <input id="accentPicker" type="color" value="#0800f0" aria-label="Choose main color" onchange="changeMainColor(this.value)">
+            <input id="accentPicker" type="color" value="#0800f0" title="To change main color of VSL" aria-label="Choose main color" onchange="changeMainColor(this.value)">
           </label>
           <div class="premium-detail-control" id="premiumDetailControl" hidden>
-            <button class="detail-setting-btn" id="detailEffectsToggle" type="button" onclick="toggleDetailEffects()">Details: On</button>
+            <button class="detail-setting-btn" id="detailEffectsToggle" type="button"  title="To turn on (or) off the details pop up"  onclick="toggleDetailEffects()">Details: On</button>
           </div>
         </div>
       </div>
       <div class="navigation">
-        <button class="nav-btn is-active" id="interestNav" aria-current="page" onclick="showSection('interest')">Interest</button>
-        <button class="nav-btn" id="notesNav" onclick="showSection('notes')">Notes</button>
+        <button class="nav-btn is-active" id="interestNav" aria-current="page" onclick="showSection('interest')" title="Borrows or lends details">Details</button>
+        <button class="nav-btn" id="notesNav" onclick="showSection('notes')"  title="To enter any notes">Notes</button>
         <button class="total-btn" id="totalBtn" onclick="openTotalPopup()">Total</button>
       </div>
-      <section id="interestSection"><h3 class="section-title" id="interestTitle">Amount Details</h3><div id="app"></div></section>
+      <section id="interestSection"><h3 class="section-title" id="interestTitle">Borrows or Lends details</h3><div id="app" title="Amount details of your account"></div></section>
       <section id="notesSection" hidden>
         <h3 class="section-title" id="notesTitle">Notes</h3>
         <div class="notes-box"><textarea id="noteInput" class="note-input" placeholder="Write something here..."></textarea><button class="save-btn" id="saveButton" onclick="saveNote()">Save</button><div id="notesList"></div></div>
@@ -326,13 +342,13 @@ ul.premium-features-list h3:focus{
     </footer>
     </div>
     <div class="modal-overlay" id="totalModal" hidden>
-      <div class="modal"><div class="modal-header"><h3 id="modalTitle">Total Summary</h3><button class="modal-close" onclick="closeTotalPopup()">X</button></div><div id="modalBody"></div></div>
+      <div class="modal"><div class="modal-header"><h3 id="modalTitle">Total Summary</h3><button class="modal-close" title="To close pop up" onclick="closeTotalPopup()">X</button></div><div id="modalBody"></div></div>
     </div>
     <div class="modal-overlay" id="detailModal" hidden role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
-      <div class="modal"><div class="modal-header"><h3 id="detailModalTitle">Detail</h3><button class="modal-close" onclick="closeDetailPopup()" aria-label="Close details">X</button></div><div id="detailModalBody" class="premium-copy"></div></div>
+      <div class="modal"><div class="modal-header"><h3 id="detailModalTitle">Detail</h3><button class="modal-close" title="To close pop up" onclick="closeDetailPopup()" aria-label="Close details">X</button></div><div id="detailModalBody" class="premium-copy"></div></div>
     </div>
     <div class="modal-overlay" id="premiumModal" hidden role="dialog" aria-modal="true" aria-labelledby="premiumModalTitle">
-      <div class="modal"><div class="modal-header"><h3 id="premiumModalTitle">VSL Premium+</h3><button class="modal-close" onclick="closePremiumPopup()" aria-label="Close premium popup">X</button></div>
+      <div class="modal"><div class="modal-header"><h3 id="premiumModalTitle">VSL Premium+</h3><button class="modal-close" title="To close pop up"  onclick="closePremiumPopup()" aria-label="Close premium popup">X</button></div>
         <div class="premium-copy">Premium+ gives you more control over how VSL looks and how account details are displayed.</div>
         <ul class="premium-features-list">
           <li>Unlock Borrowed By, Interest Rate, Date Borrowed and Days Passed.</li>
@@ -342,10 +358,10 @@ ul.premium-features-list h3:focus{
         </ul>
         <ul class="premium-features-list">
           <li>Premium+ Cost</li>
-          <li><h3 onclick="alert('You have to pay 260₹/month to get premium+ features')">Monthly - ₹260</h3></li>
-          <li><h3  onclick="alert('You have to pay 2160₹/year which mean 180₹/month to get premium+ features')" >Annual - ₹2160</h3></li>
+          <h3 onclick="alert('You have to pay ₹160/month to get premium+ features')">Monthly - ₹160</h3>
+          <h3  onclick="alert('You have to pay ₹1500/year which mean ₹125/month to get premium+ features')" >Annual - ₹1500</h3>
         </ul>
-        <div class="premium-copy">Contact your coordinator to active your Premium+.The fee will be added to your active amount or interest automatically.</div>
+        <div class="premium-copy">Contact your coordinator to active your Premium+. The fee will be added to your active amount or interest automatically.</div>
         </div>
     </div>
   </div>
@@ -359,11 +375,11 @@ ul.premium-features-list h3:focus{
   const MIN_FONT=12, MAX_FONT=28;
   let currentFontSize=16, currentUser=null;
   const TEXT={
-    today:"Today",interestTitle:"Amount Details",notesTitle:"Notes",
+    today:"Today",interestTitle:"Borrows or Lends details",notesTitle:"Notes",
     amount:"Principal Amount",borrowedBy:"Borrowed By",interest:"Interest Rate",
     takenDate:"Date Borrowed",days:"Days Passed",interestPaid:"Interest Paid",
     remaining:"Remaining Interest",entryTotal:"Total (Principal + Interest)",
-    interestNav:"Interest",notesNav:"Notes",totalBtn:"Total",modalTitle:"Total Summary",
+    interestNav:"Details",notesNav:"Notes",totalBtn:"Total",modalTitle:"Total Summary",
     sumPrincipal:"Total Principal",sumInterest:"Total Remaining Interest",
     grandTotal:"Grand Total",placeholder:"Write something here...",save:"Save",
     emptyNotes:"No notes saved yet.",delete:"Delete",loggedInAs:"Account",logout:"Logout"
@@ -416,14 +432,14 @@ ul.premium-features-list h3:focus{
   function closePremiumPopup(){document.getElementById("premiumModal").hidden=true;}
   function openDetailPopup(key,entry,data){
     const descriptions={
-      borrowedBy:["Borrowed By","The name associated with this money record in VSL.",entry.borrowedBy||"Not specified"],
-      amount:["Principal Amount","The original amount recorded before adding interest.","₹"+(Number(entry.amount)||0).toLocaleString("en-IN")],
-      interest:["Interest Rate","The monthly interest rate used for this record.",String(entry.interest)+"% per month"],
-      takenDate:["Date Borrowed","The date from which this record's day count begins.",formatDateWithMonth(entry.takenDate)],
-      days:["Days Passed","The number of days counted from the borrowed date, including that date.",String(data.days)+" days"],
+      borrowedBy:["Borrowed By","Name of the amount borrower.",entry.borrowedBy||"Not specified"],
+      amount:["Principal Amount","The original amount before adding interest.","₹"+(Number(entry.amount)||0).toLocaleString("en-IN")],
+      interest:["Interest Rate","Monthly interest rate for the borrowed amount.",String(entry.interest)+"% per month"],
+      takenDate:["Date Borrowed","Amount borrowed date, Interest will start counting from this date.",formatDateWithMonth(entry.takenDate)],
+      days:["Days Passed","No.of.days counted from till date to the borrowed date.",String(data.days)+" days"],
       interestPaid:["Interest Paid","The amount entered as already paid interest.","₹"+(Number(entry.interestPaid)||0).toLocaleString("en-IN")],
-      remaining:["Remaining Interest","Calculated interest minus the interest entered as paid.","₹"+data.remaining.toLocaleString("en-IN")],
-      total:["Total Amount","Principal plus remaining interest.","₹"+data.total.toLocaleString("en-IN")]
+      remaining:["Remaining Interest","Calculated interest minus the interest already paid.","₹"+data.remaining.toLocaleString("en-IN")],
+      total:["Total Amount","Total Principal amount plus remaining interest.","₹"+data.total.toLocaleString("en-IN")]
     };
     const detail=descriptions[key];if(!detail)return;
     document.getElementById("detailModalTitle").textContent=detail[0];
@@ -687,7 +703,7 @@ function getDays(takenDate) {
         const paidRow=document.createElement("div");paidRow.className="paid-row";
         const paidLabel=document.createElement("label");paidLabel.className="paid-label";paidLabel.textContent=TEXT.interestPaid;
         const inputWrap=document.createElement("div");inputWrap.className="paid-input-wrap";
-        const paidInput=document.createElement("input");paidInput.className="paid-input";paidInput.type="number";paidInput.min="0";paidInput.step="1";paidInput.inputMode="decimal";paidInput.value=entry.interestPaid;paidInput.setAttribute("aria-label",TEXT.interestPaid);
+        const paidInput=document.createElement("input");paidInput.className="paid-input";paidInput.title=("Enter a amount here to know how much remaining interest left.");paidInput.alt="number";paidInput.min="0";paidInput.step="1";paidInput.inputMode="decimal";paidInput.value=entry.interestPaid;paidInput.setAttribute("aria-label",TEXT.interestPaid);
 
         // Only update display – DO NOT save to localStorage
         paidInput.addEventListener("change",()=>{
